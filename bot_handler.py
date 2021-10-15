@@ -7,7 +7,11 @@ from db import users_db
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.send_message(message.chat.id, HELLO_MESSAGE)
+    if not users_db.find_one({"chat_id": message.chat.id}):
+       users_db.insert_one({"chat_id" : message.chat.id})
+       bot.send_message(message.chat.id, HELLO_MESSAGE)
+    else:
+        bot.send_message(message.chat.id, HELLO_AGAIN_MESSAGE)
 
 
 @bot.message_handler(content_types=["text"])
