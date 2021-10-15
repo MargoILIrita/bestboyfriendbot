@@ -10,8 +10,9 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):
-    answer = ANSWERS_LIST[rand.randint(len(ANSWERS_LIST))]
-    bot.send_message(message.chat.id, answer)
+    answer = [rand.randint(len(ANSWERS_LIST))]
+    bot.send_message(message.chat.id, HELLO_MESSAGE)
+    bot.send_message(message.chat.id, message.text)
 
 
 if __name__ == '__main__':
