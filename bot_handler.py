@@ -2,6 +2,7 @@ from bot import bot
 from messages import * 
 from random import randint
 from time import sleep
+from db import users_db
 
 
 @bot.message_handler(commands=['start'])
