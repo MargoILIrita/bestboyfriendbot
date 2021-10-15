@@ -2,7 +2,8 @@ import telebot
 from bot import bot 
 from messages import * 
 from random import randint
-from time import sleep, now
+from time import sleep
+from datetime import date
 from db import *
 
 def generate_answer(chat_id, mode=0):
@@ -21,7 +22,7 @@ def send_welcome(message):
         if is_user_exist(message.chat.id):
             bot.send_message(message.chat.id, HELLO_AGAIN_MESSAGE)
         else:
-            add_user(message.chat.id, now())
+            add_user(message.chat.id, date())
             bot.send_message(message.chat.id, HELLO_MESSAGE)
             user_markup = telebot.types.ReplyKeyboardMarkup()
             for i in range(len(BOYFRIEND_TYPES)):
