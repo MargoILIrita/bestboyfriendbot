@@ -12,7 +12,7 @@ def send_welcome(message):
 def repeat_all_messages(message):
     bot.send_message(message.chat.id, message.text)
     try:
-        bot.send_message(message.chat.id, random.randint(len(ANSWERS_LIST)))
+        bot.send_message(message.chat.id, random.randint(0, len(ANSWERS_LIST)))
     except Exception as e:
         print(e)
 
