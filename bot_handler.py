@@ -11,8 +11,10 @@ def send_welcome(message):
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):
     bot.send_message(message.chat.id, message.text)
-    bot.send_message(message.chat.id, random.randint(len(ANSWERS_LIST)))
-
+    try:
+        bot.send_message(message.chat.id, random.randint(len(ANSWERS_LIST)))
+    except Exception as e:
+        print(e)
 
 if __name__ == '__main__':
      bot.polling(none_stop=True)
