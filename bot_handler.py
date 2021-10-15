@@ -9,10 +9,19 @@ def send_welcome(message):
 
 
 @bot.message_handler(content_types=["text"])
-def repeat_all_messages(message):
+def answer_sweet_message(message):
     try:
         answer = ANSWERS_LIST[random.randint(0, len(ANSWERS_LIST))]
         bot.send_message(message.chat.id, answer)
+    except Exception as e:
+        print(e)
+
+@bot.message_handler(content_types=["sticker"])
+def answer_sticker(message):
+    try:
+        # answer = ANSWERS_LIST[random.randint(0, len(ANSWERS_LIST))]
+        # bot.send_message(message.chat.id, answer)
+        bot.sendSticker(message.chat.id, message.sticker.file_id)
     except Exception as e:
         print(e)
 
