@@ -1,6 +1,7 @@
 from bot import bot 
 from messages import * 
-import random
+from random import randint
+from time import sleep
 
 
 @bot.message_handler(commands=['start'])
@@ -11,7 +12,8 @@ def send_welcome(message):
 @bot.message_handler(content_types=["text"])
 def answer_sweet_message(message):
     try:
-        answer = ANSWERS_LIST[random.randint(0, len(ANSWERS_LIST))]
+        answer = ANSWERS_LIST[randint(0, len(ANSWERS_LIST))]
+        sleep(randint(2, 30)) #for realism
         bot.send_message(message.chat.id, answer)
     except Exception as e:
         print(e)
@@ -19,7 +21,8 @@ def answer_sweet_message(message):
 @bot.message_handler(content_types=["sticker"])
 def answer_sticker(message):
     try:
-        sticker_id = STICKERS_LIST[random.randint(0, len(STICKERS_LIST))]
+        sticker_id = STICKERS_LIST[randint(0, len(STICKERS_LIST))]
+        sleep(randint(2, 30))
         bot.send_sticker(message.chat.id, sticker_id)
     except Exception as e:
         print(e)
