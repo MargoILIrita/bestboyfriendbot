@@ -10,9 +10,9 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):
-    bot.send_message(message.chat.id, message.text)
     try:
-        bot.send_message(message.chat.id, random.randint(0, len(ANSWERS_LIST)))
+        answer = ANSWERS_LIST[random.randint(0, len(ANSWERS_LIST))]
+        bot.send_message(message.chat.id, answer)
     except Exception as e:
         print(e)
 
