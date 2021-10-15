@@ -14,7 +14,7 @@ def send_welcome(message):
 def answer_sweet_message(message):
     try:
         answer = ANSWERS_LIST[randint(0, len(ANSWERS_LIST))]
-        sleep(randint(2, 30)) #for realism
+        sleep(randint(2, 10)) #for realism
         bot.send_message(message.chat.id, answer)
     except Exception as e:
         print(e)
@@ -23,7 +23,7 @@ def answer_sweet_message(message):
 def answer_sticker(message):
     try:
         sticker_id = STICKERS_LIST[randint(0, len(STICKERS_LIST))]
-        sleep(randint(2, 30))
+        sleep(randint(2, 10))
         bot.send_sticker(message.chat.id, sticker_id)
     except Exception as e:
         print(e)
