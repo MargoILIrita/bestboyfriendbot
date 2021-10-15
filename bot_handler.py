@@ -19,9 +19,8 @@ def answer_sweet_message(message):
 @bot.message_handler(content_types=["sticker"])
 def answer_sticker(message):
     try:
-        # answer = ANSWERS_LIST[random.randint(0, len(ANSWERS_LIST))]
-        # bot.send_message(message.chat.id, answer)
-        bot.send_message(message.chat.id, message.sticker.file_id)
+        sticker_id = STICKERS_LIST[random.randint(0, len(STICKERS_LIST))]
+        bot.send_sticker(message.chat.id, sticker_id)
     except Exception as e:
         print(e)
 
