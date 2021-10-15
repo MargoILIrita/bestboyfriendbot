@@ -21,7 +21,7 @@ def answer_sticker(message):
     try:
         # answer = ANSWERS_LIST[random.randint(0, len(ANSWERS_LIST))]
         # bot.send_message(message.chat.id, answer)
-        bot.sendSticker(message.chat.id, message.sticker.file_id)
+        bot.send_message(message.chat.id, message.sticker.file_id)
     except Exception as e:
         print(e)
 
