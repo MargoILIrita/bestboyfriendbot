@@ -22,7 +22,7 @@ def send_welcome(message):
         if is_user_exist(message.chat.id):
             bot.send_message(message.chat.id, HELLO_AGAIN_MESSAGE)
         else:
-            add_user(message.chat.id, datetime.now(tz=None).timestamp())
+            add_user(message.chat.id, datetime.now(tz=None))
             bot.send_message(message.chat.id, HELLO_MESSAGE)
             user_markup = telebot.types.ReplyKeyboardMarkup()
             for i in range(len(BOYFRIEND_TYPES)):
