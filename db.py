@@ -9,16 +9,15 @@ IS_USER_EXIST = '''select count(*) from users_data where chat_id = {}'''
 ADD_USER = '''insert into users_data values ({chat_id}, {create_time}, 0) '''
 UPDATE_BOY_TYPE = '''UPDATE users_data SET boy_type = {boy_type} WHERE chat_id = {chat_id};'''
 
+ 
 
-def init_db():
-    try:
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-        cur = conn.cursor()
-    except Exception as e:
-        print(e)
-        conn.close()
+try:
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+except Exception as e:
+    print(e)
+    conn.close()
     
-init_db()
 
 users = {}
 users_modes = {}
