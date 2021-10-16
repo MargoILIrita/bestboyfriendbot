@@ -6,7 +6,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 cur = None
 
 IS_USER_EXIST = '''select count(*) from users_data where chat_id = {}'''
-ADD_USER = '''insert into users_data values ({chat_id}, {create_time}, 0) '''
+ADD_USER = '''insert into users_data values ({chat_id}, {create_date}, 0) '''
 UPDATE_BOY_TYPE = '''UPDATE users_data SET boy_type = {boy_type} WHERE chat_id = {chat_id};'''
 
  
