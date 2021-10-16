@@ -35,13 +35,13 @@ def send_welcome(message):
 @bot.message_handler(content_types=["text"])
 def answer_text_message(message):
     try:
-        sleep(randint(2, 10)) #for realism
         if message.text in BOYFRIEND_TYPES.values():
             hide_markup = telebot.types.ReplyKeyboardRemove()
             boy_type = list(BOYFRIEND_TYPES.keys())[list(BOYFRIEND_TYPES.values()).index(message.text)]
             add_boyfriend_type(message.chat.id, boy_type)
             bot.send_message(message.chat.id, SUCCESS_LOAD[boy_type], reply_markup=hide_markup)
         else:
+            sleep(randint(2, 10)) #for realism
             generate_answer(message.chat.id)
     except Exception as e:
         print(e)
