@@ -13,7 +13,7 @@ def generate_answer(chat_id, mode=0):
     if mode == 0:
         bot.send_message(chat_id, answer)
     elif mode == 1:
-        bot.send_sticker(chat_id, answer)
+        bot.send_sticker(chat_id, 'CAACAgIAAxkBAAM6YWnskxMe1TWPcOgwwwowT5Rk_dAAAvIAA5w6awrBT2x_MriySCEE')
 
 
 @bot.message_handler(commands=['start'])
