@@ -13,7 +13,7 @@ def generate_answer(chat_id, mode=0):
     if mode == 0:
         bot.send_message(chat_id, answer)
     elif mode == 1:
-        bot.send_sticker(chat_id, 'CAACAgIAAxkBAAM6YWnskxMe1TWPcOgwwwowT5Rk_dAAAvIAA5w6awrBT2x_MriySCEE')
+        bot.send_sticker(chat_id, answer)
 
 
 @bot.message_handler(commands=['start'])
@@ -50,6 +50,7 @@ def answer_text_message(message):
 def answer_sticker(message):
     sleep(randint(2, 10)) #for realism
     try:
+        bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAM6YWnskxMe1TWPcOgwwwowT5Rk_dAAAvIAA5w6awrBT2x_MriySCEE')
         generate_answer(message.chat.id, 1)
     except Exception as e:
         print(e)
