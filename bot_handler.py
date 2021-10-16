@@ -37,9 +37,10 @@ def answer_text_message(message):
     try:
         sleep(randint(2, 10)) #for realism
         if message.text in CHOOSE_YOUR_HERO.values():
-            boy_type = list(CHOOSE_YOUR_HERO.keys())[list(CHOOSE_YOUR_HERO.values()).index(message.text)]
+            hide_markup = telebot.types.ReplyKeyboardRemove()
+            boy_type = list(BOYFRIEND_TYPES.keys())[list(BOYFRIEND_TYPES.values()).index(message.text)]
             add_boyfriend_type(message.chat.id, boy_type)
-            bot.send_message(message.chat.id, SUCCESS_LOAD[boy_type])
+            bot.send_message(message.chat.id, SUCCESS_LOAD[boy_type], reply_markup=hide_markup)
         else:
             generate_answer(message.chat.id)
     except Exception as e:
