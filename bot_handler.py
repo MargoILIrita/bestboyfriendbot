@@ -36,7 +36,7 @@ def send_welcome(message):
 def answer_text_message(message):
     try:
         sleep(randint(2, 10)) #for realism
-        if message.text in CHOOSE_YOUR_HERO.values():
+        if message.text in BOYFRIEND_TYPES.values():
             hide_markup = telebot.types.ReplyKeyboardRemove()
             boy_type = list(BOYFRIEND_TYPES.keys())[list(BOYFRIEND_TYPES.values()).index(message.text)]
             add_boyfriend_type(message.chat.id, boy_type)
