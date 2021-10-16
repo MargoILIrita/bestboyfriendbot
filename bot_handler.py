@@ -8,15 +8,11 @@ from db import *
 
 def generate_answer(chat_id, mode=0):
     boy_type = get_boy_type(chat_id)
-    print('boy type got')
     list_ = DICT_TYPES[boy_type][mode]
-    print('list get')
     answer = list_[randint(0, len(list_))]
-    print('answer', answer)
     if mode == 0:
         bot.send_message(chat_id, answer)
     elif mode == 1:
-        print('in mode')
         bot.send_sticker(chat_id, answer)
 
 
