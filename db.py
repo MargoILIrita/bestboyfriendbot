@@ -3,23 +3,22 @@ import psycopg2
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
-CREATE_SHEME = '''CREATE ROLE admin;
-ALTER ROLE admin WITH LOGIN PASSWORD 'password' NOSUPERUSER NOCREATEDB NOCREATEROLE;
-CREATE DATABASE database_name OWNER user_name;
-REVOKE ALL ON DATABASE database_name FROM PUBLIC;
-GRANT CONNECT ON DATABASE database_name TO user_name;
-GRANT ALL ON DATABASE database_name TO user_name;'''
+cur = None
 
-# позже разберусь
-try:
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cur = conn.cursor()
-except Exception as e:
-    print(e)
-finally:
-    conn.close()
+IS_USER_EXIST = '''select count(*) from users_data where chat_id = {}'''
+ADD_USER = '''insert into users_data values ({chat_id}, {create_time}, 0) '''
+UPDATE_BOY_TYPE = '''UPDATE users_data SET boy_type = {boy_type} WHERE chat_id = {chat_id};'''
 
 
+def init_db():
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        cur = conn.cursor()
+    except Exception as e:
+        print(e)
+        conn.close()
+    
+init_db()
 
 users = {}
 users_modes = {}
@@ -31,9 +30,12 @@ def is_user_exist(chat_id):
 
 def add_user(chat_id, create_date):
     users[chat_id] = create_date
+    cur.execute(ADD_USER.format(chat_id=chat_id, create_date=create_date))
 
 def get_boy_type(chat_id):
     return users_modes[chat_id]
 
 def add_boyfriend_type(chat_id, mode):
     users_modes[chat_id] = mode
+    cur.execute(UPDATE_BOY_TYPE.format(chat_id=chat_id, boy_type=mode))
+
