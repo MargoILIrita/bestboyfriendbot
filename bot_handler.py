@@ -41,7 +41,7 @@ def answer_text_message(message):
             add_boyfriend_type(message.chat.id, boy_type)
             bot.send_message(message.chat.id, SUCCESS_LOAD[boy_type], reply_markup=hide_markup)
         else:
-            sleep(randint(2, 10)) #for realism
+            sleep(randint(1, 10)) #for realism
             generate_answer(message.chat.id)
     except Exception as e:
         print(e)
@@ -49,7 +49,7 @@ def answer_text_message(message):
 
 @bot.message_handler(content_types=["sticker"])
 def answer_sticker(message):
-    sleep(randint(2, 10)) #for realism
+    sleep(randint(1, 10)) #for realism
     try:
         generate_answer(message.chat.id, 1)
     except Exception as e:
