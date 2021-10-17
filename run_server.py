@@ -1,11 +1,12 @@
 import flask
 from telebot import types
-from config import TOKEN, APP_NAME
 from bot_handler import bot
 import os
  
 server = flask.Flask(__name__)
  
+TOKEN = os.environ['TOKEN']
+APP_NAME = os.environ['APP_NAME']
  
 @server.route('/' + TOKEN, methods=['POST'])
 def get_message():
