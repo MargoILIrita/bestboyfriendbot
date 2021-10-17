@@ -1,7 +1,8 @@
 import os
 import psycopg2
 
-DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
+
 
 cur = None
 
@@ -12,7 +13,12 @@ UPDATE_BOY_TYPE = '''UPDATE users_data SET boy_type = %s WHERE chat_id = %s;'''
  
 
 try:
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    # conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    conn = psycopg2.connect( host="localhost",
+    port = 5432,
+    database="postgres",
+    user="postgres",
+    password="")
     cur = conn.cursor()
 except Exception as e:
     print(e)
