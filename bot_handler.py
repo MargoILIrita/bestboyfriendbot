@@ -16,6 +16,13 @@ def generate_answer(chat_id, mode=0):
         bot.send_sticker(chat_id, answer)
 
 
+def show_boy_type_menu(chat_id):
+    user_markup = telebot.types.ReplyKeyboardMarkup()
+    for i in range(len(BOYFRIEND_TYPES)):
+        user_markup.row(BOYFRIEND_TYPES[i])
+    bot.send_message(chat_id, CHOOSE_YOUR_HERO, reply_markup=user_markup)
+
+
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     try:
@@ -24,10 +31,15 @@ def send_welcome(message):
         else:
             add_user(message.chat.id, datetime.now(tz=None))
             bot.send_message(message.chat.id, HELLO_MESSAGE)
-            user_markup = telebot.types.ReplyKeyboardMarkup()
-            for i in range(len(BOYFRIEND_TYPES)):
-                user_markup.row(BOYFRIEND_TYPES[i])
-            bot.send_message(message.chat.id, CHOOSE_YOUR_HERO, reply_markup=user_markup)
+            show_boy_type_menu(message.chat.id)
+    except Exception as e:
+        print(e)
+
+
+@bot.message_handler(commands=['change'])
+def send_welcome(message):
+    try:
+        show_boy_type_menu(message.chat.id)
     except Exception as e:
         print(e)
 
