@@ -1,6 +1,6 @@
 # bestboyfriendbot
 Это чат-бот в телеграме, имитирующий ласковые ответы от парня. 
-Развернут на HEROKU, с стандартной базой postgresql. 
+Развернут на HEROKU, со стандартной базой postgresql. 
 Поговорить с ним можно https://t.me/thebestboyfriendbot
 
 Пока что он умеет не так много - лишь сохранять свой типаж и отвечать на текст или стикер текстом или стикером.
@@ -14,13 +14,13 @@
 
 ## База данных
 Простая как пять копеек
-'''
+```
 create table users_data (
 	chat_id SERIAL PRIMARY key,
 	create_date timestamp not null,
 	boy_type int NOT NULL
 );
-'''
+```
 
 ## Contribute
 Есть идея? Я рада любой помощи! Пиши https://t.me/Margo_ili_rita
