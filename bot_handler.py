@@ -45,6 +45,7 @@ def answer_text_message(message):
             generate_answer(message.chat.id)
     except Exception as e:
         print(e)
+        
 
 @bot.message_handler(content_types=["sticker"])
 def answer_sticker(message):
@@ -53,6 +54,7 @@ def answer_sticker(message):
         generate_answer(message.chat.id, 1)
     except Exception as e:
         print(e)
+        bot.send_message(message.chat.id, 'Любимая')
 
 if __name__ == '__main__':
      bot.polling(none_stop=True)

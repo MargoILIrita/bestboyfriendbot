@@ -1,6 +1,6 @@
 import config
 import telebot
 
-token = config.TEST_TOKEN
+token = config.TOKEN
 bot = telebot.TeleBot(token)
 print(bot.get_me())
