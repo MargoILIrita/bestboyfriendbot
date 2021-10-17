@@ -9,8 +9,6 @@ ADD_USER = '''insert into users_data values (%s, %s, 0)'''
 UPDATE_BOY_TYPE = '''UPDATE users_data SET boy_type = %s WHERE chat_id = %s;'''
 FIND_BOY_TYPE = '''select boy_type from users_data where chat_id = %s'''
 
- 
-
 try:
     conn = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
     cur = conn.cursor()
