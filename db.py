@@ -1,5 +1,5 @@
 import psycopg2
-from config import DATABASE_CONFIG
+import os
 
 conn = None
 cur = None
@@ -12,7 +12,7 @@ FIND_BOY_TYPE = '''select boy_type from users_data where chat_id = %s'''
  
 
 try:
-    conn = psycopg2.connect(DATABASE_CONFIG)
+    conn = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
     cur = conn.cursor()
 except Exception as e:
     print(e)

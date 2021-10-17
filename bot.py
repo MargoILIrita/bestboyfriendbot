@@ -1,6 +1,6 @@
-import config
+import os
 import telebot
 
-token = config.TOKEN
+token = os.environ['DATABASE_URL']
 bot = telebot.TeleBot(token)
 print(bot.get_me())
