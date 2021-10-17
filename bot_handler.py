@@ -52,6 +52,8 @@ def answer_text_message(message):
             boy_type = list(BOYFRIEND_TYPES.keys())[list(BOYFRIEND_TYPES.values()).index(message.text)]
             add_boyfriend_type(message.chat.id, boy_type)
             bot.send_message(message.chat.id, SUCCESS_LOAD[boy_type], reply_markup=hide_markup)
+        elif 'Привет' in message.text or 'привет' in message.text:
+            bot.send_message(message.chat.id, 'Привет❤️')
         else:
             sleep(randint(1, 10)) #for realism
             generate_answer(message.chat.id)
@@ -66,7 +68,7 @@ def answer_sticker(message):
         generate_answer(message.chat.id, 1)
     except Exception as e:
         print(e)
-        bot.send_message(message.chat.id, 'Любимая')
+        bot.send_message(message.chat.id, 'Люблю тебя')
 
 if __name__ == '__main__':
      bot.polling(none_stop=True)
